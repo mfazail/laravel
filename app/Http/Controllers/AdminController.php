@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\BanquetBook;
+use App\Models\Review;
 use App\Models\User;
 
 class AdminController extends Controller
@@ -9,8 +11,10 @@ class AdminController extends Controller
     public function index()
     {
         $users = User::where('user_type', '!=', 'DEV')->withCount('reviews')->withCount('booking')->get();
+        $bookings = BanquetBook::with('user')->with('banquet')->get();
+        $reviews = Review::with('user')->with('banquet')->get();
         // return $users;
-        return view('admin.users', compact('users'));
+        return view('admin.users', compact('users', 'bookings', 'reviews'));
     }
     public function userDetails($id)
     {

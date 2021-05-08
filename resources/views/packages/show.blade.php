@@ -1,4 +1,4 @@
-<x-app-layout title="{{ $banquet->name }}">
+<x-app-layout title=" - {{ $banquet->name }}">
 
     <style>
         #head img {
@@ -76,19 +76,7 @@
             </div>
             <div class="z-10 absolute left-10 sm:bottom-20 bottom-12">
                 <h1 class="custom-shadow text-white text-xl px-2 py-1">
-                    @switch($banquet->banquet_type)
-                        @case(0)
-                            Premium
-                        @break
-                        @case(1)
-                            Economic
-                        @break
-                        @case(2)
-                            Basic
-                        @break
-                        @default
-                    
-                    @endswitch
+                    {{ $banquet->banquet_type }}
                 </h1>
             </div>
         </div>
@@ -129,11 +117,9 @@
                     </div>
                 </div>
                 <h1 class="text-lg lg:text-xl xl:text-2xl ">Services</h1>
-                <ul class="pl-2 pb-4 pt-2">
-                    @foreach ($services as $service)
-                        <li class="pt-2">{{ $service->service_name }}</li>
-                    @endforeach
-                </ul>
+
+                @livewire('service', ['banquet' => $banquet])
+
                 <div class="border-b-2"></div>
 
             </div>

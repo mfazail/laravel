@@ -19,10 +19,10 @@ class BanquetSeeder extends Seeder
             DB::table('banquets')->insert([
                 'name' => 'Banquet Name',
                 'price' => 2000,
-                'min_cap' => 300,
-                'max_cap' => 600,
+                'min_cap' => Arr::random([300, 400, 100, 75, 50, 500]),
+                'max_cap' => Arr::random([600, 500, 1500, 750, 550, 1000]),
                 'non_veg' => boolval(false),
-                'place' => 'Banquet Place',
+                'place' => Arr::random(['Newtown', 'Topsia', 'Airport', 'Ballygunge', 'Gariahat', 'Ruby']),
                 'banquet_type' => Arr::random(['Premium', 'Economic', 'Basic']),
                 'address' => 'Banquet Address'
             ]);

@@ -162,9 +162,12 @@
                         <h4 class="border-bottom mt-2 py-2 text-center" style="font-family: 'Mitr', sans-serif">FEATURES
                         </h4>
                         <ul class="pl-3">
-                            <li class="py-1"><span class="material-icons">check</span>Exciting Complimentary Gifts</li>
-                            <li class="py-1"><span class="material-icons">check</span>4 Hours Event Assistance</li>
-                            <li class="py-1"><span class="material-icons">check</span>1 Welcome Girl To Greet Everyone On the Entrance</li>
+                            <li class="py-1"><span class="fa fa-check pt-1 text-blue-500"></span> Exciting Complimentary
+                                Gifts</li>
+                            <li class="py-1"><span class="fa fa-check pt-1 text-blue-500"></span> 4 Hours Event
+                                Assistance</li>
+                            <li class="py-1"><span class="fa fa-check pt-1 text-blue-500"></span> 1 Welcome Girl To
+                                Greet Everyone On the Entrance</li>
                         </ul>
                     </div>
                 </div>
@@ -179,9 +182,12 @@
                         <h4 class="border-bottom mt-2 py-2 text-center" style="font-family: 'Mitr', sans-serif">FEATURES
                         </h4>
                         <ul class="pl-3">
-                            <li class="py-1"><span class="material-icons">check</span>2 Hours Free Photography</li>
-                            <li class="py-1"><span class="material-icons">check</span>8 Hours Event Assistance</li>
-                            <li class="py-1"><span class="material-icons">check</span>2 Welcome Girls To Greet Everyone On the Entrance</li>
+                            <li class="py-1"><span class="fa fa-check pt-1 text-blue-500"></span> 2 Hours Free
+                                Photography</li>
+                            <li class="py-1"><span class="fa fa-check pt-1 text-blue-500"></span> 8 Hours Event
+                                Assistance</li>
+                            <li class="py-1"><span class="fa fa-check pt-1 text-blue-500"></span> 2 Welcome Girls To
+                                Greet Everyone On the Entrance</li>
                         </ul>
                     </div>
                 </div>
@@ -198,9 +204,12 @@
                         <h4 class="border-bottom mt-2 py-2 text-center" style="font-family: 'Mitr', sans-serif">FEATURES
                         </h4>
                         <ul class="pl-3">
-                            <li class="py-1"><span class="material-icons">check</span>Free Pre-Wedding Photography</li>
-                            <li class="py-1"><span class="material-icons">check</span>24 Hours Event Assistance</li>
-                            <li class="py-1"><span class="material-icons">check</span>Planning Of Special Entry For Groom Or Bride With Additional Features</li>
+                            <li class="py-1"><span class="fa fa-check pt-1 text-blue-500"></span> Free Pre-Wedding
+                                Photography</li>
+                            <li class="py-1"><span class="fa fa-check pt-1 text-blue-500"></span> 24 Hours Event
+                                Assistance</li>
+                            <li class="py-1"><span class="fa fa-check pt-1 text-blue-500"></span> Planning Of Special
+                                Entry For Groom Or Bride With Additional Features</li>
                         </ul>
                     </div>
                 </div>
@@ -208,7 +217,8 @@
         </div>
 
         <h1 class="text-center my-4 pt-6 text-2xl sm:text-3xl">Venues For <span class="text-blue-500">Everyone</span>,
-            <span class="text-blue-500">Any Event</span>, <span class="text-blue-500">Any Budget</span>.</h1>
+            <span class="text-blue-500">Any Event</span>, <span class="text-blue-500">Any Budget</span>.
+        </h1>
         <div class="mt-5">
             <div id="venueSlider" class="owl-carousel owl-theme">
                 <div class="item m-5 shadow-lg">
@@ -274,7 +284,8 @@
             <div class="container mx-auto relative">
                 <h1 class="text-center my-4 pt-6 text-2xl sm:text-3xl">About Us</h1>
                 <h5 class="text-center sm:px-4 md:px-4 lg:px-40 xl:px-40 2xl:px-40 pb-8">Searching For A Perfect Venue
-                    In Kolkata Is No More A Hassle Task Because Venue Website Is Here To Help You With It. We Offer Versatile Venues That Are Best Suitable According To
+                    In Kolkata Is No More A Hassle Task Because Venue Website Is Here To Help You With It. We Offer
+                    Versatile Venues That Are Best Suitable According To
                     Your
                     Event. Our Range Of Venues Is Elegant And Upscale At The Same Time.</h5>
                 <div class="flex justify-center flex-col sm:flex-col md:flex-col lg:flex-row xl:flex-row items-center">

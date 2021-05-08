@@ -96,8 +96,8 @@
                                 <form method="POST" action="{{ route('logout') }}">
                                     @csrf
 
-                                    <x-jet-dropdown-link href="{{ route('logout') }}" onclick="event.preventDefault();
-                                                                this.closest('form').submit();">
+                                    <x-jet-dropdown-link href="{{ route('logout') }}"
+                                        onclick="event.preventDefault();this.closest('form').submit();">
                                         {{ __('Log Out') }}
                                     </x-jet-dropdown-link>
                                 </form>
@@ -129,7 +129,7 @@
     </div>
 
     <!-- Responsive Navigation Menu -->
-    <div :class="{'block': open, 'hidden': ! open}" class="hidden sm:hidden">
+    <div :class="{'block': open, 'hidden': ! open}" class="hidden sm:hidden" @click.away="open = false">
 
         <!-- Responsive Settings Options -->
         <div class="pt-4 pb-1 border-t border-gray-200">
@@ -149,14 +149,20 @@
                 Contact Us
             </a>
             @auth
-                <div class="flex items-center px-4">
+                <div class="flex items-center px-3">
                     <div>
                         <div class="font-medium text-base text-gray-800">{{ Auth::user()->name }}</div>
                         <div class="font-medium text-sm text-gray-500">{{ Auth::user()->email }}</div>
                     </div>
                 </div>
-
-                <div class="mt-3 space-y-1">
+                <div class="mt-3">
+                    @if (Auth::user()->user_type == 'DEV' || Auth::user()->user_type == 'ADM')
+                        <a class="block mb-3 px-3" href="{{ route('allUser') }}">
+                            {{ __('Admin Panel') }}
+                        </a>
+                    @endif
+                </div>
+                <div class="mt-3">
                     <!-- Account Management -->
                     <x-jet-responsive-nav-link href="{{ route('profile.show') }}"
                         :active="request()->routeIs('profile.show')">
@@ -168,16 +174,10 @@
                         @csrf
 
                         <x-jet-responsive-nav-link href="{{ route('logout') }}" onclick="event.preventDefault();
-                                                    this.closest('form').submit();">
+                                                        this.closest('form').submit();">
                             {{ __('Log Out') }}
                         </x-jet-responsive-nav-link>
                     </form>
-                    @if (Auth::user()->user_type == 'DEV')
-                        <a class="block mb-3 px-3" href="{{ route('allUser') }}">
-                            {{ __('Users') }}
-                        </a>
-                    @endif
-
                 </div>
             @else
                 <a class="block mx-3 my-5" href="{{ route('login') }}">

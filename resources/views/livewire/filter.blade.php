@@ -1,14 +1,11 @@
-<div class="container sm:px-5 md:px-10 xl:px-40 mx-auto">
-    <div class="flex justify-between items-center px-3 pb-1  pt-4 cursor-pointer " wire:click.prevent="showHide">
+<div class="container sm:px-5 md:px-10 xl:px-40 mx-auto" x-data="{open:false}">
+    <div class="flex justify-between items-center px-3 pb-1  pt-4 cursor-pointer" @click="open = !open">
         <h1>Filter</h1>
-        @if ($show)
-            <span class="material-icons">close</span>
-        @else
-            <span class="material-icons">filter_list</span>
-        @endif
+        <span x-show="!open" class="material-icons">filter_list</span>
+        <span x-show="open" class="material-icons">close</span>
     </div>
-    <div
-        class="flex-col md:flex-row justify-around items-start pl-4 sm:items-center mt-3 border-t-2 pt-2 {{ $show ? 'flex' : 'hidden' }} transition-all duration-300">
+    <div x-show="open"
+        class="flex flex-col md:flex-row justify-around items-start pl-4 sm:items-center mt-3 border-t-2 pt-2  transition-all duration-300">
         <div>
             <h1>Budget</h1>
             <label class="inline-flex items-centercursor-pointer mt-3">
@@ -53,28 +50,30 @@
             </label>
         </div>
         <div class="flex flex-row md:flex-col justify-around items-center pt-4">
-            <button class="mx-2 sm:my-4 bg-blue-500 px-4 py-2 text-white focus:outline-none rounded-lg"
+            <button @click="open = false"
+                class="mx-2 sm:my-4 bg-blue-500 px-4 py-2 text-white focus:outline-none rounded-lg"
                 wire:click="applyFilter">Apply</button>
-            <button class="mx-2 sm:my-4 bg-blue-500 px-4 py-2 text-white focus:outline-none rounded-lg"
+            <button @click="open = false"
+                class="mx-2 sm:my-4 bg-blue-500 px-4 py-2 text-white focus:outline-none rounded-lg"
                 wire:click="resetFilter">Reset</button>
         </div>
     </div>
     <div class="w-full py-1 flex overflow-x-auto">
         @for ($i = 0; $i < count($places) + 1; $i++)
 
-            @if ($i == 0) <h1 class="ml-3 cursor-pointer py-1 font-medium px-3
-            rounded-full border-2 border-blue-400 transition-all duration-300
+            @if ($i == 0) <button class="ml-3 cursor-pointer py-1 font-medium
+            px-3 rounded-full border-2 border-blue-400 transition-all duration-300 focus:outline-none
             {{ $currentPlace == 0 ? 'bg-blue-600 text-white border-blue-600' : '' }}"
             wire:click="filterPlace({{ $i }})">
             All
-            </h1>
+            </button>
         @else
-            <h1 class="ml-3 cursor-pointer py-1 font-medium px-3 rounded-full border-2 border-blue-400
-            transition-all duration-300
+            <button class="ml-3 cursor-pointer py-1 font-medium px-3 rounded-full border-2
+            border-blue-400transition-all duration-300 focus:outline-none
             {{ $currentPlace == $i ? 'bg-blue-600 text-white  border-blue-600' : '' }}"
             wire:click="filterPlace({{ $i }})">
             {{ $places[$i - 1] }}
-            </h1> @endif
+            </button> @endif
         @endfor
 
     </div>

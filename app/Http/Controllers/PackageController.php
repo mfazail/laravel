@@ -12,9 +12,8 @@ class PackageController extends Controller
     public function show($id)
     {
         $banquet = Banquet::findOrFail($id);
-        $services = $banquet->banquetService;
         $related = Banquet::where('place', $banquet->place)->get();
-        return view('packages.show', compact('banquet', 'services', 'related'));
+        return view('packages.show', compact('banquet', 'related'));
     }
 
 

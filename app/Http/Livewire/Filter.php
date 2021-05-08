@@ -3,13 +3,11 @@
 namespace App\Http\Livewire;
 
 use App\Models\Banquet;
-use Illuminate\Database\Eloquent\Collection;
 use Livewire\Component;
 
 class Filter extends Component
 {
 
-    public bool $show = false;
     public $price = 0;
     public $capacity = 0;
     public $places = [];
@@ -24,7 +22,6 @@ class Filter extends Component
             array_push($this->places, $value->place);
         }
         $this->places = array_values(array_unique($this->places));
-        // dd($this->places);
     }
 
 
@@ -33,10 +30,6 @@ class Filter extends Component
         return view('livewire.filter');
     }
 
-    public function showHide()
-    {
-        $this->show = !$this->show;
-    }
     public function applyFilter()
     {
         $banquets = Banquet::query()->where('banquet_type', $this->banquetType);
@@ -76,10 +69,12 @@ class Filter extends Component
             default:
                 break;
         }
+        if ($this->currentPlace != 0) {
+            $banquets->where('place', $this->places[$this->currentPlace - 1]);
+        }
 
         $c = $banquets->get();
         $result = $c->unique('id');
-        $this->showHide();
         $this->emitTo('list-banquets', 'filterBanquets', $result);
     }
 
@@ -88,7 +83,7 @@ class Filter extends Component
         $banquets = Banquet::where('banquet_type', $this->banquetType)->get();
         $this->price = 0;
         $this->capacity = 0;
-        $this->showHide();
+        $this->currentPlace = 0;
         $this->emitTo('list-banquets', 'resetFilter', $banquets);
     }
 
@@ -103,7 +98,6 @@ class Filter extends Component
             $result = $banquets->where('place', $this->places[$index - 1])
                 ->get();
         }
-        // dd($index);
         $this->emitTo('list-banquets', 'placeFilter', $result);
     }
 }

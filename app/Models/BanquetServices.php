@@ -12,6 +12,11 @@ class BanquetServices extends Model
     protected $table = 'banquet_services';
     protected $primary_key = 'id';
 
+    protected $fillable = [
+        'banquet_id',
+        'service_name'
+    ];
+
 
     public function banquet()
     {

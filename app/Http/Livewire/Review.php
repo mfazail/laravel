@@ -11,8 +11,8 @@ class Review extends Component
 {
     public $banquet;
     public $review;
-    protected $rules =[
-        'review' =>'required|max:255'
+    protected $rules = [
+        'review' => 'required|max:255|min:5'
     ];
 
     public function mount(Banquet $banquet)
@@ -31,12 +31,12 @@ class Review extends Component
             'review' => $this->review
         ]);
         $res = $reviewS->save();
-        if($res){
+        if ($res) {
             $this->emitTo('reviews', 'refreshReviews');
             $this->review = '';
             session()->flash('reviewSubmitted', 'Thank You For Reviewing!');
-        }else{
-            return 'Error submitting Review';
+        } else {
+            session()->flash('reviewSubmitted', 'Error');
         }
     }
 
