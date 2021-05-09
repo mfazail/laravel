@@ -35,8 +35,8 @@
 
                 </li>
                 @if ($isAdmin)
-                    <button wire:click="deleteService({{ $service->id }})" type="button"
-                        class="text-red-500 underline">Delete</button>
+                    <button wire:click="deleteService({{ $service->id }})" type="button" class="text-red-500 "><span
+                            class="fa fa-trash"></span></button>
                 @endif
             </div>
         @endforeach

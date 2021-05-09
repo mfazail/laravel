@@ -88,13 +88,13 @@
                     {{ $banquet->name }}
                 </h1>
                 <div class="flex justify-start items-center">
-                    <span class="material-icons">location_city</span>
+                    <span class="fa fa-city"></span>
                     <h2 class="pl-1 sm:text-sm md:text-lg xl:text-xl  font-medium">
                         {{ $banquet->address }}
                     </h2>
                 </div>
                 <div class="flex justify-start items-center pb-3 mb-5 border-b-2">
-                    <span class="material-icons">place</span>
+                    <span class="fa fa-map-marker-alt"></span>
 
                     <h3 class="text-sm pl-1">
                         {{ $banquet->place }}
@@ -110,7 +110,7 @@
                         <h3 class="pl-2 text-red-400">{{ $banquet->price }}/Plate</h3>
                     </div>
                     <div class="flex flex-col justify-start items-center">
-                        <span class="material-icons w-5 h-5">groups</span>
+                        <span class="fa fa-users text-blue-500"></span>
                         <h2 class="pl-2">
                             {{ $banquet->min_cap }}-{{ $banquet->max_cap }}
                         </h2>

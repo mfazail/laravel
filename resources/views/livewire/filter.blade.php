@@ -1,11 +1,11 @@
 <div class="container sm:px-5 md:px-10 xl:px-40 mx-auto" x-data="{open:false}">
     <div class="flex justify-between items-center px-3 pb-1  pt-4 cursor-pointer" @click="open = !open">
         <h1>Filter</h1>
-        <span x-show="!open" class="material-icons">filter_list</span>
-        <span x-show="open" class="material-icons">close</span>
+        <span x-show="!open" class="material-icons text-gray-600">filter_list</span>
+        <span x-show="open" class="material-icons text-gray-600">close</span>
     </div>
     <div x-show="open"
-        class="flex flex-col md:flex-row justify-around items-start pl-4 sm:items-center mt-3 border-t-2 pt-2  transition-all duration-300">
+        class="flex flex-wrap justify-around items-start pl-4 sm:items-center mt-3 border-t-2 py-2  transition-all duration-300">
         <div>
             <h1>Budget</h1>
             <label class="inline-flex items-centercursor-pointer mt-3">
@@ -62,15 +62,15 @@
         @for ($i = 0; $i < count($places) + 1; $i++)
 
             @if ($i == 0) <button class="ml-3 cursor-pointer py-1 font-medium
-            px-3 rounded-full border-2 border-blue-400 transition-all duration-300 focus:outline-none
-            {{ $currentPlace == 0 ? 'bg-blue-600 text-white border-blue-600' : '' }}"
+            px-3 rounded-full border-2 transition-all duration-300 focus:outline-none
+            {{ $currentPlace == 0 ? 'bg-blue-600 text-white border-transparent' : '' }}"
             wire:click="filterPlace({{ $i }})">
             All
             </button>
         @else
             <button class="ml-3 cursor-pointer py-1 font-medium px-3 rounded-full border-2
-            border-blue-400transition-all duration-300 focus:outline-none
-            {{ $currentPlace == $i ? 'bg-blue-600 text-white  border-blue-600' : '' }}"
+            transition-all duration-300 focus:outline-none
+            {{ $currentPlace == $i ? 'bg-blue-600 text-white  border-transparent' : '' }}"
             wire:click="filterPlace({{ $i }})">
             {{ $places[$i - 1] }}
             </button> @endif

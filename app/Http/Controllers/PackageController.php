@@ -20,7 +20,7 @@ class PackageController extends Controller
 
     public function premium()
     {
-        $banquets = Banquet::where('banquet_type', 'Premium')->get();
+        $banquets = Banquet::where('banquet_type', 'Premium')->with('banquetService')->get();
         return view('packages.index', compact('banquets'));
     }
 
@@ -28,7 +28,7 @@ class PackageController extends Controller
 
     public function economic()
     {
-        $banquets = Banquet::where('banquet_type', 'Economic')->get();
+        $banquets = Banquet::where('banquet_type', 'Economic')->with('banquetService')->get();
         return view('packages.index', compact('banquets'));
     }
 
@@ -36,7 +36,7 @@ class PackageController extends Controller
 
     public function basic()
     {
-        $banquets = Banquet::where('banquet_type', 'Basic')->get();
+        $banquets = Banquet::where('banquet_type', 'Basic')->with('banquetService')->get();
         return view('packages.index', compact('banquets'));
     }
 
@@ -44,13 +44,14 @@ class PackageController extends Controller
     public function search(Request $request)
     {
         $search = $request->s;
-        $banquetsName = Banquet::where('name', 'like', '%' . $search . '%')->get();
-        $banquetsPlace = Banquet::where('place', 'like', '%' . $search . '%')->get();
-        $banquetsAddress = Banquet::where('address', 'like', '%' . $search . '%')->get();
+        $banquetsName = Banquet::where('name', 'like', '%' . $search . '%')->withCount('reviews')->get();
+        $banquetsPlace = Banquet::where('place', 'like', '%' . $search . '%')->withCount('reviews')->get();
+        $banquetsAddress = Banquet::where('address', 'like', '%' . $search . '%')->withCount('reviews')->get();
 
         $collection = collect([$banquetsName, $banquetsPlace, $banquetsAddress]);
         $collapsed = $collection->collapse();
         $banquets = $collapsed->unique('id');
+        // return $banquets;
         return view('packages.search', compact('banquets', 'search'));
     }
 }
