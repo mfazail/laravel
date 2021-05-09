@@ -13,12 +13,14 @@
                 <button class="focus:outline-none px-4 py-2"
                     :class="{'bg-blue-600 text-white rounded-md shadow-lg':tab === 'reviews'}"
                     @click="tab='reviews'">Reviews</button>
+                <a href="{{ route('banquets') }}">Banquets</a>
             </div>
             <div x-show.transition.opacity.duration.300ms="tab==='users'">
                 <table class="table-auto w-full mt-5">
                     <thead>
                         <tr class="border-blue-200 border-2">
                             <th>Name</th>
+                            <th>User Type</th>
                             <th>Email</th>
                             <th>Mobile</th>
                             <th>Reviewed</th>
@@ -32,6 +34,7 @@
                             <tr>
                                 <td class="border-blue-200 border-2 px-3 text-center"><a class="text-purple-600"
                                         href="{{ route('user.details', $user->id) }}">{{ $user->name }}</a></td>
+                                <td class="border-blue-200 border-2 px-3 text-center">{{ $user->user_type }}</td>
                                 <td class="border-blue-200 border-2 px-3 text-center">{{ $user->email }}</td>
                                 <td class="border-blue-200 border-2 px-3 text-center">{{ $user->mobile }}</td>
                                 <td class="border-blue-200 border-2 px-3 text-center">{{ $user->reviews_count }}</td>

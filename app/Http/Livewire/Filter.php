@@ -13,6 +13,7 @@ class Filter extends Component
     public $places = [];
     public $currentPlace = 0;
     public $banquetType;
+    public $banquets;
 
     public function mount($banquetType)
     {
@@ -22,6 +23,7 @@ class Filter extends Component
             array_push($this->places, $value->place);
         }
         $this->places = array_values(array_unique($this->places));
+        $this->banquets = $banquets;
     }
 
 
@@ -75,7 +77,7 @@ class Filter extends Component
 
         $c = $banquets->get();
         $result = $c->unique('id');
-        $this->emitTo('list-banquets', 'filterBanquets', $result);
+        $this->banquets = $result;
     }
 
     public function resetFilter()
@@ -84,20 +86,18 @@ class Filter extends Component
         $this->price = 0;
         $this->capacity = 0;
         $this->currentPlace = 0;
-        $this->emitTo('list-banquets', 'resetFilter', $banquets);
+        $this->banquets = $banquets;
     }
 
     public function filterPlace($index)
     {
         $this->currentPlace = $index;
         $banquets = Banquet::query()->where('banquet_type', $this->banquetType);
-        $result = [];
         if ($index == 0) {
-            $result = $banquets->get();
+            $this->banquets = $banquets->get();
         } else {
-            $result = $banquets->where('place', $this->places[$index - 1])
+            $this->banquets = $banquets->where('place', $this->places[$index - 1])
                 ->get();
         }
-        $this->emitTo('list-banquets', 'placeFilter', $result);
     }
 }

@@ -1,9 +1,9 @@
 <nav x-data="{ open: false,yOff:window.pageYOffset,hide:false }"
-    class="bg-white border-b fixed w-full z-20 border-gray-100"
-    x-on:scroll.window="yOff > window.pageYOffset ? hide=true:hide=false, yOff = window.pageYOffset">
+    class="bg-white border-b fixed top-0 w-full z-20 border-gray-100 transition-all duration-300"
+    x-on:scroll.window="yOff > window.pageYOffset ? hide=false:hide=true, yOff <= 50? hide=false: hide, yOff = window.pageYOffset"
+    :class="{'-top-24': hide, 'top-0':!hide}">
     <!-- Primary Navigation Menu -->
-    <div x-show.transition.in.duration.300ms.out.duration.300ms="yOff <= 50 ? hide=true : hide"
-        class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div {{-- x-show.transition.duration.300ms="yOff <= 50 ? hide=true : hide" --}} class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 transition-all duration-300">
         <div class="flex justify-between h-16">
             <div class="flex">
                 <!-- Logo -->
@@ -132,8 +132,8 @@
     </div>
 
     <!-- Responsive Navigation Menu -->
-    <div x-show="!hide && open ? open = false : open" :class="{'block': open, 'hidden': ! open}"
-        class="hidden sm:hidden" @click.away="open = false">
+    <div x-show="hide && open ? open = false : open" :class="{'block': open, 'hidden': ! open}" class="hidden sm:hidden"
+        @click.away="open = false">
 
         <!-- Responsive Settings Options -->
         <div class="pt-4 pb-1 border-t border-gray-200">
@@ -179,7 +179,7 @@
 
                         <x-jet-responsive-nav-link href="{{ route('logout') }}"
                             onclick="event.preventDefault();
-                                                                                                                                this.closest('form').submit();">
+                                                                                                                                                                                                                                                        this.closest('form').submit();">
                             {{ __('Log Out') }}
                         </x-jet-responsive-nav-link>
                     </form>
