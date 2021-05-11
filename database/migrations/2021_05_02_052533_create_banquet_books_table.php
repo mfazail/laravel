@@ -15,8 +15,8 @@ class CreateBanquetBooksTable extends Migration
     {
         Schema::create('banquet_books', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('user_id')->constrained('users','id');
-            $table->foreignId('banquet_id')->constrained('banquets','id');
+            $table->foreignId('user_id')->constrained('users', 'id')->onDelete('cascade');
+            $table->foreignId('banquet_id')->constrained('banquets', 'id');
             $table->string('name');
             $table->string('email');
             $table->text('event_detail');

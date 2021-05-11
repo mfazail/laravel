@@ -9,6 +9,16 @@ class Banquet extends Model
 {
     use HasFactory;
 
+    protected $fillable = [
+        'name',
+        'price',
+        'min_cap',
+        'max_cap',
+        'place',
+        'non_veg',
+        'banquet_type',
+        'address'
+    ];
 
     public function banquetService()
     {
@@ -22,5 +32,9 @@ class Banquet extends Model
     public function reviews()
     {
         return $this->hasMany(Review::class);
+    }
+    public function images()
+    {
+        return $this->hasMany(BanquetImages::class);
     }
 }

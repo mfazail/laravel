@@ -18,7 +18,7 @@ class Filter extends Component
     public function mount($banquetType)
     {
         $this->banquetType = $banquetType;
-        $banquets = Banquet::where('banquet_type', $banquetType)->get();
+        $banquets = Banquet::where('banquet_type', $banquetType)->with('reviews')->get();
         foreach ($banquets as $value) {
             array_push($this->places, $value->place);
         }
@@ -34,7 +34,7 @@ class Filter extends Component
 
     public function applyFilter()
     {
-        $banquets = Banquet::query()->where('banquet_type', $this->banquetType);
+        $banquets = Banquet::query()->where('banquet_type', $this->banquetType)->withCount('reviews');
 
         switch ($this->price) {
             case 0:
@@ -82,22 +82,10 @@ class Filter extends Component
 
     public function resetFilter()
     {
-        $banquets = Banquet::where('banquet_type', $this->banquetType)->get();
+        $banquets = Banquet::where('banquet_type', $this->banquetType)->withCount('reviews')->get();
         $this->price = 0;
         $this->capacity = 0;
         $this->currentPlace = 0;
         $this->banquets = $banquets;
-    }
-
-    public function filterPlace($index)
-    {
-        $this->currentPlace = $index;
-        $banquets = Banquet::query()->where('banquet_type', $this->banquetType);
-        if ($index == 0) {
-            $this->banquets = $banquets->get();
-        } else {
-            $this->banquets = $banquets->where('place', $this->places[$index - 1])
-                ->get();
-        }
     }
 }

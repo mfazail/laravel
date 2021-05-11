@@ -20,7 +20,6 @@ class PackageController extends Controller
 
     public function premium()
     {
-        // $banquets = Banquet::where('banquet_type', 'Premium')->with('banquetService')->get();
         $banquetType = 'Premium';
         return view('packages.index', compact('banquetType'));
     }
@@ -29,7 +28,6 @@ class PackageController extends Controller
 
     public function economic()
     {
-        // $banquets = Banquet::where('banquet_type', 'Economic')->with('banquetService')->get();
         $banquetType = 'Economic';
         return view('packages.index', compact('banquetType'));
     }
@@ -38,7 +36,6 @@ class PackageController extends Controller
 
     public function basic()
     {
-        // $banquets = Banquet::where('banquet_type', 'Basic')->with('banquetService')->get();
         $banquetType = 'Basic';
         return view('packages.index', compact('banquetType'));
     }

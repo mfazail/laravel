@@ -18,11 +18,8 @@ class Book extends Component
     public $e_detail;
     public $isBooked;
 
-    protected $rules = [
-        'review' => 'required|max:255'
-    ];
-    
-    protected $listeners = ['submit'=> '$refresh'];
+
+    protected $listeners = ['submit' => '$refresh'];
 
     public function mount(Banquet $banquet)
     {
@@ -36,14 +33,25 @@ class Book extends Component
                 $this->email = $book->email;
                 $this->v_date = $book->venue_date;
                 $this->e_detail = $book->event_detail;
-            }else if($book->venue_date < Carbon::now()->toDateString()) {
+            } else if ($book->venue_date < Carbon::now()->toDateString()) {
                 $this->isBooked = false;
-            } 
+            }
+        } else {
+            $this->name = auth()->user()->name;
+            $this->number = auth()->user()->mobile;
+            $this->email = auth()->user()->email;
         }
     }
 
     public function submit()
     {
+        $this->validate([
+            'name' => 'required|string|min:6|max:50',
+            'number' => 'required|regex:/[0-9]{10}/',
+            'email' => 'required|email',
+            'v_date' => 'required|date|date_format:Y-m-d|after_or_equal:' . date('Y-m-d'),
+            'e_detail' => 'required|string|min:10'
+        ]);
         $banquetB = BanquetBook::create([
             'user_id' => Auth::user()->id,
             'banquet_id' => $this->banquet->id,

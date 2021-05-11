@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateBanquetServicesTable extends Migration
+class CreateBanquetImagesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,10 +13,10 @@ class CreateBanquetServicesTable extends Migration
      */
     public function up()
     {
-        Schema::create('banquet_services', function (Blueprint $table) {
+        Schema::create('banquet_images', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('banquet_id')->constrained('banquets', 'id')->onDelete('cascade');
-            $table->string('service_name');
+            $table->foreignId('banquet_id')->constrained('banquets', 'id');
+            $table->string('img_path');
             $table->timestamps();
         });
     }
@@ -28,6 +28,6 @@ class CreateBanquetServicesTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('banquet_services');
+        Schema::dropIfExists('banquet_images');
     }
 }

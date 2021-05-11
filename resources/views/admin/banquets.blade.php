@@ -1,4 +1,6 @@
 <x-app-layout title=" - All Banquets">
+    @livewire('add-banquet')
+
     <table class="table-auto w-full mt-5">
         <thead>
             <tr class="border-blue-200 border-2">

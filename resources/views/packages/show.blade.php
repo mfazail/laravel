@@ -79,6 +79,9 @@
                     {{ $banquet->banquet_type }}
                 </h1>
             </div>
+            <div class="absolute right-10 bottom-10 z-10">
+                @livewire('add-banquet-image', ['id' => $banquet->id])
+            </div>
         </div>
         <div class="grid grid-cols-5 gap-4">
             {{-- Main Content --}}
