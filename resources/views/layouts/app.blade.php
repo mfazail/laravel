@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
-    <title>{{ config('app.name', 'Laravel') }}{{ $title ?? "" }}</title>
+    <title>{{ config('app.name', 'Laravel') }}{{ $title ?? '' }}</title>
     <link rel="shortcut icon" href="{{ asset('assets/logo.png') }}" type="image/x-icon">
 
     <!-- Fonts -->
@@ -21,8 +21,7 @@
         href="https://cdnjs.cloudflare.com/ajax/libs/MaterialDesign-Webfont/5.9.55/css/materialdesignicons.min.css"
         integrity="sha512-vIgFb4o1CL8iMGoIF7cYiEVFrel13k/BkTGvs0hGfVnlbV6XjAA0M0oEHdWqGdAVRTDID3vIZPOHmKdrMAUChA=="
         crossorigin="anonymous" />
-        <link href="https://fonts.googleapis.com/icon?family=Material+Icons"
-      rel="stylesheet">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/magnific-popup.js/1.1.0/magnific-popup.min.css"
         integrity="sha512-+EoPw+Fiwh6eSeRK7zwIKG2MA8i3rV/DGa3tdttQGgWyatG/SkncT53KHQaS5Jh9MNOT3dmFL0FjTY08And/Cw=="
         crossorigin="anonymous" />
@@ -38,6 +37,7 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/magnific-popup.js/1.1.0/jquery.magnific-popup.min.js"
         integrity="sha512-IsNh5E3eYy3tr/JiX2Yx4vsCujtkhwl7SLqgnwLNgf04Hrt9BT9SXlLlZlWx+OK4ndzAoALhsMNcCmkggjZB1w=="
         crossorigin="anonymous"></script>
+
     <script src="{{ asset('js/owl.carousel.min.js') }}"></script>
     <script src="{{ mix('js/app.js') }}" defer></script>
 </head>
@@ -53,6 +53,24 @@
     </div>
 
     @stack('modals')
+    <script src="https://www.gstatic.com/firebasejs/8.6.0/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.5.0/firebase-auth.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.6.0/firebase-analytics.js"></script>
+    <script>
+        var firebaseConfig = {
+            apiKey: "AIzaSyDOxxRtSjFQ9tEiG4aETGD1mEurnli2yfI",
+            authDomain: "fazail-alam.firebaseapp.com",
+            databaseURL: "https://fazail-alam.firebaseio.com",
+            projectId: "fazail-alam",
+            storageBucket: "fazail-alam.appspot.com",
+            messagingSenderId: "165474951974",
+            appId: "1:165474951974:web:47e48447d59acc2c0497e7",
+            measurementId: "G-1EHSETGL6E",
+        };
+        firebase.initializeApp(firebaseConfig);
+        firebase.analytics();
+
+    </script>
     @livewireScripts
 </body>
 

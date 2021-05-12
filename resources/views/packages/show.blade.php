@@ -131,7 +131,7 @@
 
             {{-- Book Content --}}
             <div
-                class=" shadow-none sm:shadow-none md:shadow-none lg:shadow-lg col-span-full md:col-span-3 lg:col-span-2 sm:col-start-1 md:col-start-2 border-blue-400 sm:border-0 lg:border-2 mr-0 sm:mr-4 p-4">
+                class="shadow-none sm:shadow-none md:shadow-none lg:shadow-lg col-span-full md:col-span-3 lg:col-span-2 sm:col-start-1 md:col-start-2 border-blue-400 sm:border-0 lg:border-2 mr-0 sm:mr-4 p-4">
                 <h1>Request For Booking</h1>
                 @livewire('book', ['banquet' => $banquet])
                 @livewire('review', ['banquet' => $banquet])

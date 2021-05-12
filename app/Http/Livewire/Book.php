@@ -14,13 +14,26 @@ class Book extends Component
     public $name;
     public $number;
     public $email;
-    public $v_date;
-    public $e_detail;
+    public $venue_date;
+    public $event_detail;
+    public $isVerified = false;
+    public $isBooking = false;
+    public $otpSent = false;
     public $isBooked;
 
 
-    protected $listeners = ['submit' => '$refresh'];
+    protected $listeners = [
+        'submit' => '$refresh',
+        'verified' => 'submit',
+        'OTPsent' => 'otpSent'
+    ];
 
+
+
+    public function otpSent()
+    {
+        $this->otpSent = true;
+    }
     public function mount(Banquet $banquet)
     {
         $this->banquet = $banquet;
@@ -31,8 +44,8 @@ class Book extends Component
                 $this->name = $book->name;
                 $this->number = $book->mobile;
                 $this->email = $book->email;
-                $this->v_date = $book->venue_date;
-                $this->e_detail = $book->event_detail;
+                $this->venue_date = $book->venue_date;
+                $this->event_detail = $book->event_detail;
             } else if ($book->venue_date < Carbon::now()->toDateString()) {
                 $this->isBooked = false;
             }
@@ -43,31 +56,39 @@ class Book extends Component
         }
     }
 
-    public function submit()
+    public function isValidated()
     {
-        $this->validate([
+        $this->isBooking = $this->validate([
             'name' => 'required|string|min:6|max:50',
             'number' => 'required|regex:/[0-9]{10}/',
             'email' => 'required|email',
-            'v_date' => 'required|date|date_format:Y-m-d|after_or_equal:' . date('Y-m-d'),
-            'e_detail' => 'required|string|min:10'
+            'venue_date' => 'required|date|date_format:Y-m-d|after_or_equal:' . date('Y-m-d'),
+            'event_detail' => 'required|string|min:10'
         ]);
+        if ($this->isBooking) {
+            $this->dispatchBrowserEvent('v');
+        }
+    }
+
+    public function submit()
+    {
+
         $banquetB = BanquetBook::create([
             'user_id' => Auth::user()->id,
             'banquet_id' => $this->banquet->id,
             'name' => $this->name,
             'email' => $this->email,
-            'event_detail' => $this->e_detail,
+            'event_detail' => $this->event_detail,
             'mobile' => $this->number,
-            'venue_date' => $this->v_date
+            'venue_date' => $this->venue_date
         ]);
         $res = $banquetB->save();
         if ($res) {
             $this->isBooked = true;
-            $this->emit('sumit');
-            return back()->withInput();
+            $this->isBooking = false;
+            $this->emit('submit');
         } else {
-            return 'Error while requesting for book';
+            session()->flash('nVerified', 'Error while requesting for book');
         }
     }
 
