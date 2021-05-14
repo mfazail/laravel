@@ -45,9 +45,9 @@ class PackageController extends Controller
     {
         $search = ucwords($request->s);
 
-        $banquetsName = Banquet::where('name', 'like', '%' . $search . '%')->withCount('reviews')->get();
-        $banquetsPlace = Banquet::where('place', 'like', '%' . $search . '%')->withCount('reviews')->get();
-        $banquetsAddress = Banquet::where('address', 'like', '%' . $search . '%')->withCount('reviews')->get();
+        $banquetsName = Banquet::where('name', 'like', '%' . $search . '%')->withCount('reviews')->with('banquetService')->get();
+        $banquetsPlace = Banquet::where('place', 'like', '%' . $search . '%')->withCount('reviews')->with('banquetService')->get();
+        $banquetsAddress = Banquet::where('address', 'like', '%' . $search . '%')->withCount('reviews')->with('banquetService')->get();
 
         $collection = collect([$banquetsName, $banquetsPlace, $banquetsAddress]);
         $collapsed = $collection->collapse();

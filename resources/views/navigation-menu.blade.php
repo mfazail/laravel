@@ -1,5 +1,5 @@
 <nav x-data="{ open: false,yOff:window.pageYOffset,hide:false }"
-    class="bg-white border-b fixed top-0 w-full z-20 border-gray-100 transition-all duration-300"
+    class="bg-white border-b fixed top-0 w-full z-20 shadow-sm transition-all duration-300 border-gray-300"
     x-on:scroll.window="yOff > window.pageYOffset ? hide=false:hide=true, yOff <= 50? hide=false: hide, yOff = window.pageYOffset"
     :class="{'-top-24': hide, 'top-0':!hide}">
     <!-- Primary Navigation Menu -->
@@ -179,7 +179,7 @@
 
                         <x-jet-responsive-nav-link href="{{ route('logout') }}"
                             onclick="event.preventDefault();
-                                                                                                                                                                                                                                                        this.closest('form').submit();">
+                                                                                                                                                                                                                                                                                this.closest('form').submit();">
                             {{ __('Log Out') }}
                         </x-jet-responsive-nav-link>
                     </form>

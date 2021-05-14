@@ -221,61 +221,15 @@
         </h1>
         <div class="mt-5">
             <div id="venueSlider" class="owl-carousel owl-theme">
-                <div class="item m-5 shadow-lg">
-                    <img class="h-52 w-60"
-                        src="https://images.unsplash.com/photo-1529636120425-66f3708694e7?ixid=MnwxMjA3fDB8MHxzZWFyY2h8M3x8dmVudWV8ZW58MHx8MHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60">
-                    <h2 class="absolute bottom-12 text-white text-xl custom-shadow left-10">Banquet Name</h2>
-                    <h4 class="absolute bottom-7 text-white left-10">Banquet Type</h4>
-                </div>
-                <div class="item m-5 shadow-lg">
-                    <img class="h-52 w-60"
-                        src="https://images.unsplash.com/photo-1469371670807-013ccf25f16a?ixid=MnwxMjA3fDB8MHxzZWFyY2h8OHx8dmVudWV8ZW58MHx8MHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60"
-                        alt="">
-                    <h2 class="absolute bottom-12 text-white text-xl custom-shadow left-10">Banquet Name</h2>
-                    <h4 class="absolute bottom-7 text-white left-10">Banquet Type</h4>
-                </div>
-                <div class="item m-5 shadow-lg">
-                    <img class="h-52 w-60"
-                        src="https://images.unsplash.com/photo-1594666271705-6355eb1dd521?ixid=MnwxMjA3fDB8MHxzZWFyY2h8MTJ8fHZlbnVlfGVufDB8fDB8fA%3D%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60   "
-                        alt="">
-                    <h2 class="absolute bottom-12 text-white text-xl custom-shadow left-10">Banquet Name</h2>
-                    <h4 class="absolute bottom-7 text-white left-10">Banquet Type</h4>
-                </div>
-                <div class="item m-5 shadow-lg">
-                    <img class="h-52 w-60"
-                        src="https://images.unsplash.com/photo-1594666271705-6355eb1dd521?ixid=MnwxMjA3fDB8MHxzZWFyY2h8MTJ8fHZlbnVlfGVufDB8fDB8fA%3D%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60   "
-                        alt="">
-                    <h2 class="absolute bottom-12 text-white text-xl custom-shadow left-10">Banquet Name</h2>
-                    <h4 class="absolute bottom-7 text-white left-10">Banquet Type</h4>
-                </div>
-                <div class="item m-5 shadow-lg">
-                    <img class="h-52 w-60"
-                        src="https://images.unsplash.com/photo-1594666271705-6355eb1dd521?ixid=MnwxMjA3fDB8MHxzZWFyY2h8MTJ8fHZlbnVlfGVufDB8fDB8fA%3D%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60   "
-                        alt="">
-                    <h2 class="absolute bottom-12 text-white text-xl custom-shadow left-10">Banquet Name</h2>
-                    <h4 class="absolute bottom-7 text-white left-10">Banquet Type</h4>
-                </div>
-                <div class="item m-5 shadow-lg">
-                    <img class="h-52 w-60"
-                        src="https://images.unsplash.com/photo-1594666271705-6355eb1dd521?ixid=MnwxMjA3fDB8MHxzZWFyY2h8MTJ8fHZlbnVlfGVufDB8fDB8fA%3D%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60   "
-                        alt="">
-                    <h2 class="absolute bottom-12 text-white text-xl custom-shadow left-10">Banquet Name</h2>
-                    <h4 class="absolute bottom-7 text-white left-10">Banquet Type</h4>
-                </div>
-                <div class="item m-5 shadow-lg">
-                    <img class="h-52 w-60"
-                        src="https://images.unsplash.com/photo-1594666271705-6355eb1dd521?ixid=MnwxMjA3fDB8MHxzZWFyY2h8MTJ8fHZlbnVlfGVufDB8fDB8fA%3D%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60   "
-                        alt="">
-                    <h2 class="absolute bottom-12 text-white text-xl custom-shadow left-10">Banquet Name</h2>
-                    <h4 class="absolute bottom-7 text-white left-10">Banquet Type</h4>
-                </div>
-                <div class="item m-5 shadow-lg">
-                    <img class="h-52 w-60"
-                        src="https://images.unsplash.com/photo-1594666271705-6355eb1dd521?ixid=MnwxMjA3fDB8MHxzZWFyY2h8MTJ8fHZlbnVlfGVufDB8fDB8fA%3D%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60   "
-                        alt="">
-                    <h2 class="absolute bottom-12 text-white text-xl custom-shadow left-10">Banquet Name</h2>
-                    <h4 class="absolute bottom-7 text-white left-10">Banquet Type</h4>
-                </div>
+                @foreach ($banquets as $banquet)
+                    <div class="item m-5 shadow-lg">
+                        <img class="h-52 w-60"
+                            src="https://images.unsplash.com/photo-1529636120425-66f3708694e7?ixid=MnwxMjA3fDB8MHxzZWFyY2h8M3x8dmVudWV8ZW58MHx8MHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60">
+                        <h2 class="absolute bottom-12 text-white text-xl custom-shadow left-10">{{ $banquet->name }}
+                        </h2>
+                        <h4 class="absolute bottom-7 text-white left-10">{{ $banquet->banquet_type }}</h4>
+                    </div>
+                @endforeach
             </div>
         </div>
 

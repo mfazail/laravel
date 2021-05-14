@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\PackageController;
+use App\Models\Banquet;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -16,7 +17,8 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('home.index');
+    $banquets = Banquet::all();
+    return view('home.index', compact('banquets'));
 });
 
 

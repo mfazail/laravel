@@ -27,7 +27,7 @@ class AdminController extends Controller
     }
     public function banquets()
     {
-        $banquets = Banquet::with('banquetService')->with('booking')->with('reviews')->get();
+        $banquets = Banquet::with('banquetService')->get();
         return view('admin.banquets', compact('banquets'));
     }
 }

@@ -1,11 +1,13 @@
 <footer class="container pt-5 border-t-2" id="contact">
-    
+
     <div class="flex flex-col sm:flex-row items-center justify-center ">
         <div class="m-auto">
-            <img class="img-fluid" style="width: 200px" src="{{ asset('assets/logo.png') }}" alt="">
+            <img class="img-fluid" style="width: 100px" src="{{ asset('assets/logo.png') }}" alt="">
             <div class="flex items-center justify-center pt-3">
-                <a class="pr-2" href="#"><i style="width: 30px;height: 30px; color:tomato;" class="fab fa-facebook-square"></i></a>
-                <a class="pl-2" href="#"><i style="width: 30px;height: 30px; color:tomato;" class="fab fa-instagram"></i></a>
+                <a class="pr-2" href="#"><i style="width: 30px;height: 30px;"
+                        class="fab fa-facebook-square text-blue-600"></i></a>
+                <a class="pl-2" href="#"><i style="width: 30px;height: 30px;"
+                        class="fab fa-instagram text-yellow-600"></i></a>
             </div>
         </div>
         <div class="m-auto px-3">
@@ -18,8 +20,9 @@
         </div>
     </div>
     <div class="border-top py-3">
-        <h6 class="text-center">Developed By <a class="text-blue-500" href="#">Fazail</a>, Copyright &copy; 2021 Fazail.</h6>
-        
+        <h6 class="text-center">Developed By <a class="text-blue-500" href="#">Fazail</a>, Copyright &copy; 2021 Fazail.
+        </h6>
+
     </div>
-    
+
 </footer>

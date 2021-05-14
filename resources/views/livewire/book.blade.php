@@ -68,7 +68,7 @@
                 @else
                     <p class="text-blue-400">Please Verify Captcha to Send OTP</p>
                 @endif
-                <x-jet-input id="code" class="block mt-1 w-full" type="text" :value="old('code')" autofocus />
+                <x-jet-input id="code" class="block mt-1 w-full" type="text" :value="old('code')" />
                 @error('code')
                     <span class="text-red-400">{{ $message }}</span>
                 @enderror
