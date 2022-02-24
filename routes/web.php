@@ -21,6 +21,8 @@ Route::get('/', function () {
     return view('home.index', compact('banquets'));
 });
 
+Route::get('/ip',fn()=> request()->ip());
+
 
 Route::get('/packages/premium', [PackageController::class, 'premium'])->name('premium');
 Route::get('/packages/economic', [PackageController::class, 'economic'])->name('economic');

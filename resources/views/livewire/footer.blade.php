@@ -1,8 +1,23 @@
 <footer class="container pt-5 border-t-2" id="contact">
 
+<style>
+    .slow{
+        animation: slow 2s ease infinite ;
+    }
+
+    @keyframes slow {
+        0%{
+            transform: rotate(90deg)
+        }
+        100%{
+            transform: rotate(180deg)
+        }
+    }
+</style>
+
     <div class="flex flex-col sm:flex-row items-center justify-center ">
         <div class="m-auto">
-            <img class="img-fluid" style="width: 100px" src="{{ asset('assets/logo.png') }}" alt="">
+            <img class="img-fluid animate-slow" style="width: 100px" src="{{ asset('assets/logo.png') }}" alt="">
             <div class="flex items-center justify-center pt-3">
                 <a class="pr-2" href="#"><i style="width: 30px;height: 30px;"
                         class="fab fa-facebook-square text-blue-600"></i></a>

@@ -48,7 +48,7 @@ class AddBanquet extends Component
             'updated_at' => now(),
         ]);
 
-
+        dd($b->id);
 
         $res = $b->save();
 

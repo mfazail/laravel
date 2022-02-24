@@ -1,4 +1,4 @@
-<div x-data="{show: @entangle('success'),myError:@entangle('myError')}">
+<div x-cloak x-data="{show: @entangle('success'),myError:@entangle('myError')}">
     <div class="absolute top-0 left-0 right-0 z-50 bg-gray-400 w-full h-full bg-opacity-40"
         x-show.transition.origin.top.right.duration.300ms="show">
         <div x-show.transition.origin.left.duration.500ms="myError" @click.away="$wire.set('myError',false)"

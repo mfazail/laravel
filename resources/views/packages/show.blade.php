@@ -1,10 +1,6 @@
 <x-app-layout title=" - {{ $banquet->name }}">
 
     <style>
-        #head img {
-            height: 90vh;
-        }
-
         .custom-shadow {
             text-shadow: 0 2px 4px gray;
         }
@@ -13,66 +9,34 @@
             outline: none;
         }
 
-        .owl-prev {
-            position: absolute;
-            top: 40vh;
-            left: 0;
-            width: 50px;
-            outline: none;
-            border: none;
-
-        }
-
-        .owl-next {
-            position: absolute;
-            top: 40vh;
-            right: 0;
-            width: 50px;
-            outline: none;
-            border: none;
-        }
-
-        .owl-prev span,
-        .owl-next span {
-            font-size: 2rem;
-            color: white;
-        }
-
-        @media(max-width:500px) {
-            #head img {
-                height: 40vh;
-            }
-
-            .owl-next,
-            .owl-prev {
-                top: 20vh;
-            }
-        }
-
     </style>
     <div class="mx-auto">
         <div class="relative">
-            <div id="head" class="owl-carousel owl-theme">
-                <div class="item">
-                    <img class="w-full object-cover object-center"
-                        src="https://images.unsplash.com/photo-1529636120425-66f3708694e7?ixid=MnwxMjA3fDB8MHxzZWFyY2h8M3x8dmVudWV8ZW58MHx8MHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60"
-                        alt="">
+            {{-- Banquet Slide --}}
+            <div class="swiper overflow-hidden">
+                <div class="swiper-wrapper">
+                    <div class="swiper-slide">
+                        <img class="w-full sm:h-screen h-96 object-cover object-center"
+                            src="https://images.unsplash.com/photo-1529636120425-66f3708694e7?ixid=MnwxMjA3fDB8MHxzZWFyY2h8M3x8dmVudWV8ZW58MHx8MHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60"
+                            alt="">
+                    </div>
+                    <div class="swiper-slide">
+                        <img class="w-full sm:h-screen h-96 object-cover object-center"
+                            src="https://images.unsplash.com/photo-1529636120425-66f3708694e7?ixid=MnwxMjA3fDB8MHxzZWFyY2h8M3x8dmVudWV8ZW58MHx8MHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60"
+                            alt="">
+                    </div>
+                    <div class="swiper-slide">
+                        <img class="w-full sm:h-screen h-96 object-cover object-center"
+                            src="https://images.unsplash.com/photo-1529636120425-66f3708694e7?ixid=MnwxMjA3fDB8MHxzZWFyY2h8M3x8dmVudWV8ZW58MHx8MHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60"
+                            alt="">
+                    </div>
+                    <div class="swiper-slide">
+                        <img class="w-full sm:h-screen h-96 object-cover object-center"
+                            src="https://images.unsplash.com/photo-1529636120425-66f3708694e7?ixid=MnwxMjA3fDB8MHxzZWFyY2h8M3x8dmVudWV8ZW58MHx8MHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60"
+                            alt="">
+                    </div>
                 </div>
-                <div class="item">
-                    <img class="w-full object-cover object-center"
-                        src="https://images.unsplash.com/photo-1529636120425-66f3708694e7?ixid=MnwxMjA3fDB8MHxzZWFyY2h8M3x8dmVudWV8ZW58MHx8MHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60"
-                        alt="">
-                </div>
-                <div class="item">
-                    <img class="w-full object-cover object-center"
-                        src="https://images.unsplash.com/photo-1529636120425-66f3708694e7?ixid=MnwxMjA3fDB8MHxzZWFyY2h8M3x8dmVudWV8ZW58MHx8MHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60"
-                        alt="">
-                </div>
-                <div class="item">
-                    <img class="w-full object-cover object-center"
-                        src="https://images.unsplash.com/photo-1529636120425-66f3708694e7?ixid=MnwxMjA3fDB8MHxzZWFyY2h8M3x8dmVudWV8ZW58MHx8MHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60"
-                        alt="">
-                </div>
+
             </div>
             <div class="z-10 absolute left-10 sm:bottom-20 bottom-12">
                 <h1 class="custom-shadow text-white text-xl px-2 py-1">
@@ -83,7 +47,7 @@
                 @livewire('add-banquet-image', ['id' => $banquet->id])
             </div>
         </div>
-        <div class="grid grid-cols-5 gap-4">
+        <div class="grid grid-cols-5 gap-4 mt-5">
             {{-- Main Content --}}
             <div class="col-span-full lg:col-span-3 px-4">
 
@@ -138,21 +102,24 @@
             </div>
             {{-- * Book Content * --}}
         </div>
+        {{-- Related Slide --}}
         @if ($related->count() > 1)
             <div class="container mx-auto relative px-14">
                 <h1 class="text-2xl py-5">Banquets in {{ $banquet->place }}</h1>
-                <div id="related" class="owl-carousel owl-theme">
-                    @foreach ($related as $relatedBanquet)
-                        @if ($banquet->id != $relatedBanquet->id)
-                            <div class="item">
-                                <a href="{{ route('packages.show', $relatedBanquet->id) }}">
-                                    <img class="h-64 object-cover object-center z-0"
-                                        src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTcBjbprc7-3sQwf0hP5xLBnKnMmLV8HzINWQ&usqp=CAU"
-                                        alt="{{ $relatedBanquet->name }}">
-                                </a>
-                            </div>
-                        @endif
-                    @endforeach
+                <div id="related" class="related-swiper overflow-hidden">
+                    <div class="swiper-wrapper">
+                        @foreach ($related as $relatedBanquet)
+                            @if ($banquet->id != $relatedBanquet->id)
+                                <div class="swiper-slide">
+                                    <a href="{{ route('packages.show', $relatedBanquet->id) }}">
+                                        <img class="h-64 object-cover object-center z-0"
+                                            src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTcBjbprc7-3sQwf0hP5xLBnKnMmLV8HzINWQ&usqp=CAU"
+                                            alt="{{ $relatedBanquet->name }}">
+                                    </a>
+                                </div>
+                            @endif
+                        @endforeach
+                    </div>
                 </div>
             </div>
         @endif
@@ -160,38 +127,34 @@
     </div>
 
     <script>
-        $('#head').owlCarousel({
-            items: 1,
+        const swiper = new Swiper('.swiper', {
+            slidesPerView: 1,
             loop: true,
-            nav: true
-        })
-        $('#related').owlCarousel({
-            items: 3,
-            margin: 20,
-            loop: false,
-            responsiveClass: true,
-            responsive: {
-                0: {
-                    items: 1,
-                    center: true,
-                    autowidth: true,
+            autoplay: true,
+        });
+        const relatedSwiper = new Swiper('.related-swiper', {
+            slidesPerView: 3,
+            spaceBetween: 20,
+            centeredSlides: false,
+            breakpoints: {
+                400: {
+                    slidesPerView: 1,
+                    centeredSlides: true,
                 },
                 600: {
-                    items: 2,
-                    nav: false
+                    slidesPerView: 2,
                 },
                 900: {
-                    items: 3,
+                    slidesPerView: 3,
                 },
                 1100: {
-                    items: 4,
+                    slidesPerView: 4,
                 },
                 1400: {
-                    items: 5,
-                }
+                    slidesPerView: 5,
+                },
             }
         })
-
     </script>
 
 </x-app-layout>
